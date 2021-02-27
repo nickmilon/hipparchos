@@ -1,0 +1,39 @@
+{
+  "name": "hipparchos",
+  "version": "1.0.1",
+  "type": "module",
+
+  "main": "./lib/hipparhos.js",
+  "module": "./lib/hipparhos.js",
+
+  "description": "js bitwise operations for unsigned integers and BigInt",
+
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickmilon/hipparchos.git"
+  },
+  "keywords": [
+    "bitwise",
+    "js",
+    "BigInt", "integer",
+    "power of 2", "log2", "set Bit",  "toggle Bit", "flip Bit", "check bit", "pack long", "unpack number" , " most significant bit"
+  ],
+  "author": "nickmilon@geognos.com",
+  "license": "Apache-2.0",
+  "bugs": { "url": "https://github.com/nickmilon/hipparchos/issues"},
+  "homepage": "https://github.com/nickmilon/hipparchos#readme",
+  "jest": {
+    "testTimeout": 10000,
+    "collectCoverage": true,
+    "verbose": true,
+    "bail": 2,
+    "testEnvironment": "jest-environment-node",
+    "transform": {},
+    "coverageReporters": ["html"],
+    "globals": { "__INSPECT__": true, "__RND_LOOPS__": 1000 }
+  }
+  
+}
