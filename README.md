@@ -14,16 +14,16 @@ Library is named after [Hipparhos](https://en.wikipedia.org/wiki/Hipparchus) (or
     Supported Functionality is limited to what js can do relatively efficiently for more complicated things better use a dedicated library written in C or any other compiled language.  
     
 - ### Conventions:
-    Library only supports ESM modules (imports) commonjs (require) is not supported. If you need commonjs support feel free to fork the library or transpile it somehow to commonjs.
+    Library only supports ESM modules (imports) commonjs (require) is not supported, If you need commonjs support feel free to fork the library or transpile it somehow to commonjs.  
     Library provides an interface to two distinct utilities ``libBit32`` and ``libBitBI``.
     Both come with same (well almost) functionality and expose same methods and work on **UNSIGNED** integers  **ONLY** therefore **NEVER EVER** pass a negative number or BigInt as argument to any of the functions provided negative values can have side effects including infinite loops and memory leaks  
     For ``libBit32`` all arguments passed **should be** in the range of 0 up to ((2 ** 31) -1) (0x7FFFFFFF hex 2147483647 decimal)
     Same applies to all return values you can expect those to be in above range.
     For ``libBitBI`` arguments and returned results theoretically can be unsigned BigInt numbers of an size but practically (2 ** 1000) is a limit after which efficiency is questionable although operations here have been tested with (2 ** 1000000) big integers.  
-    From what I have experienced in node/V8 BigInt bitwise operations are ~10x slower when compared to native 32 bit operations with comparable bit sizes (< 2n ^ 32n) and there after efficiency decays linearly in relation to number of bits.
+    From what I have experienced in node/V8 BigInt bitwise operations are ~10x slower when compared to native 32 bit operations with comparable bit sizes (< 2n ^ 32n) and there after efficiency decays linearly in relation to number of bits.  
     ``v0 v1 v2`` refereed herewith are respectively the values ```0 1 2``` for ``libBit32`` and ```0n 1n 2n``` for ```libBitBI```
 - ### Error/Type checking  
-    For efficiency no type checks are performed and no errors are thrown for those any Don’t call any function with arguments outside of the ranges described above and you will be safe.
+    For efficiency no type checks are performed and no errors are thrown for those. Don’t call any function with arguments outside of the ranges described above and you will be safe.  
     As the two libraries are mostly symmetrical/interchangeable you can do your own type checking and then call one or the other library as:
     ```js
         const utilsBit = (typeof value === 'bigint') ? libBitBI : libBit32 ;
@@ -89,7 +89,6 @@ Library is named after [Hipparhos](https://en.wikipedia.org/wiki/Hipparchus) (or
         - ```pack64(int64n)``` packs a 64bit BigInt in an array of two BigIntegers
         - ```pack32(packedArr)``` packs two 32Bit number to an array of two 32Bit js Numbers
         - ```unpack32(packedArr)``` unpacks two 32Bit js number to to a single BigInt  
-    - #### see [functionality list](etc/documentation.md)
     - #### Usage/Examples
         ```js
         import { libBit32, libBitBI } from 'hipparchos';
